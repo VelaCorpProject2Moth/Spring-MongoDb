@@ -20,34 +20,37 @@ spring:
     host: localhost
     port: 6379
     database: 2
-  jpa:
-    show-sql: false
-    open-in-view: false
-    hibernate:
-      ddl-auto: none
-      naming:
-        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
 
-    properties:
-      hibernate:
-        jdbc:
-          lob:
-            non_contextual_creation: true
-  datasource:
-    url: jdbc:postgresql://localhost:5432/notification_service?useSSL=false&useUnicode=true&characterEncoding=UTF-8
-    username: postgres
-    password: 123456
+#    <!--    If only use mongoDb we can not need spring-boot-jpa-->
+
+  #  jpa:
+#    show-sql: false
+#    open-in-view: false
+#    hibernate:
+#      ddl-auto: none
+#      naming:
+#        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+#        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+#
+#    properties:
+#      hibernate:
+#        jdbc:
+#          lob:
+#            non_contextual_creation: true
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/device_service?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+#    username: postgres
+#    password: 123456
 
   data:
     mongodb:
       host: localhost
       port: 27017
-      database: notification_service
-      username: notiserviceuser
+      database: device_service
+      username: deviceserviceuser
       password: 123456
-      uri: mongodb://notiserviceuser:123456@localhost:27017/notification_service
-      authentication-database: notification_service
+      uri: mongodb://deviceserviceuser:123456@localhost:27017/device_service
+      authentication-database: device_service
 management:
   endpoints:
     web:
