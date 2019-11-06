@@ -28,4 +28,15 @@ public class DeviceServiceImpl implements DeviceService {
   public Page<Device> getAll(Pageable pageable) {
     return deviceRepository.findAll(pageable);
   }
+
+  @Override
+  public Device edit(DeviceDto deviceDto, String id) {
+    Device device = deviceRepository.findById(id).get();
+    device.setAlias(deviceDto.getAlias());
+    device.setName(deviceDto.getName());
+    device.setPrice(deviceDto.getPrice());
+    device.setProducer(deviceDto.getProducer());
+    return deviceRepository.save(device);
+  }
+
 }

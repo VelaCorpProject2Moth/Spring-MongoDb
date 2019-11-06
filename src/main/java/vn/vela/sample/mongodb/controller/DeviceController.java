@@ -7,8 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 import vn.vela.sample.mongodb.dto.DeviceDto;
@@ -42,6 +44,11 @@ public class DeviceController {
     Page<Device> page = deviceService.getAll(pageable);
     return ResponseWithPage.<Device>builder().data(page.getContent()).pageIndex(page.getNumber())
         .totalElement(page.getTotalElements()).totalPage(page.getTotalPages()).build();
+  }
+
+  @PutMapping
+  public Device edit(@RequestBody DeviceDto deviceDto, @RequestParam String id) {
+    return deviceService.edit(deviceDto, id);
   }
 
 }

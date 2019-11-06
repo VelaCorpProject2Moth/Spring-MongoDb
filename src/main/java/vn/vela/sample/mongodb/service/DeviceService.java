@@ -10,4 +10,6 @@ public interface DeviceService {
   Device add(DeviceDto deviceDto);
 
   Page<Device> getAll(Pageable pageable);
+
+  Device edit(DeviceDto deviceDto, String id);
 }
